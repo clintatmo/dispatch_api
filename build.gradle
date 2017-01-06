@@ -44,6 +44,7 @@ dependencies {
     compile('org.springframework:spring-context-support:4.3.2.RELEASE')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile('com.auth0:java-jwt:2.2.0')
+	compile('mysql:mysql-connector-java:5.1.37')
     compile('org.postgresql:postgresql:9.4.1212.jre7')
 	compile('com.h2database:h2')
 	compile('io.springfox:springfox-swagger2:2.5.0')

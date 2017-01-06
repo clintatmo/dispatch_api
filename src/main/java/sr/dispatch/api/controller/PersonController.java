@@ -26,7 +26,7 @@ public class PersonController {
 
     //-------------------Retrieve All Persons--------------------------------------------------------
 
-    @RequestMapping(value = "", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Person >> listAllPersons() {
         List<Person> Persons = personService.findAllPersons();
         if(Persons.isEmpty()){
