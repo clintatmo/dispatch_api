@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 /* * * @author Clint Atmosoerodjo #commander *  */
 
 @Component
-public class AccountAuthenticatoinProvider extends AbstractUserDetailsAuthenticationProvider {
+public class AccountAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
 
     /**
      * The Logger for this class.

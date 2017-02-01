@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private CustomUserDetailsService userDetailsService;
 
     @Autowired
-    private AccountAuthenticatoinProvider accountAuthenticationProvider;
+    private AccountAuthenticationProvider accountAuthenticationProvider;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
