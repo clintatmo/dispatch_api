@@ -1,10 +1,11 @@
-package sr.dispatch.api.service;
+package sr.dispatch.api.service.bean;
 
 import sr.dispatch.api.dto.PersonDto;
 import sr.dispatch.api.model.Person;
 import sr.dispatch.api.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sr.dispatch.api.service.PersonService;
 
 import java.util.List;
 

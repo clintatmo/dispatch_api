@@ -1,4 +1,4 @@
-package sr.dispatch.api.service;
+package sr.dispatch.api.service.bean;
 
 
 import sr.dispatch.api.model.Account;
@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import sr.dispatch.api.service.AccountService;
+import sr.dispatch.api.service.RoleService;
 
 import javax.persistence.EntityExistsException;
 import java.util.Collection;

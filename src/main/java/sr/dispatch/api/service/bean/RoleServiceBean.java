@@ -1,4 +1,4 @@
-package sr.dispatch.api.service;
+package sr.dispatch.api.service.bean;
 
 
 import sr.dispatch.api.model.Role;
@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import sr.dispatch.api.service.RoleService;
 
 /**
  * Manage the data from database from Role table user
@@ -14,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-public class RoleServiceBean implements RoleService{
+public class RoleServiceBean implements RoleService {
 
 
     /**
