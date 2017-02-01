@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import sr.dispatch.api.service.MailService;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
@@ -33,8 +34,14 @@ public class AuthenticationController {
     @Autowired
     private JavaMailSender mailSender;
 
+    @Autowired
+    private MailService mailService;
+
     @RequestMapping(value="/sample", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Account> sampleGet(HttpServletResponse response){
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setText(mailService.generateMailContent(response));
+        mailSender.send(mailMessage);
         return new ResponseEntity<Account>(accountService.findByUsername("user"), HttpStatus.CREATED);
     }
 
