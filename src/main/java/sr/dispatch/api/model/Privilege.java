@@ -13,8 +13,11 @@ public class Privilege {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String module;
-    private String name;
     private String description;
+    private boolean create = false;
+    private boolean edit = false;
+    private boolean delete = false;
+    private boolean view = false;
 
     @ManyToMany(mappedBy = "privileges")
     private Collection<Role> roles;
@@ -35,14 +38,6 @@ public class Privilege {
         this.module = module;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -57,5 +52,37 @@ public class Privilege {
 
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
+    }
+
+    public boolean isCreate() {
+        return create;
+    }
+
+    public void setCreate(boolean create) {
+        this.create = create;
+    }
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
+    }
+
+    public boolean isDelete() {
+        return delete;
+    }
+
+    public void setDelete(boolean delete) {
+        this.delete = delete;
+    }
+
+    public boolean isView() {
+        return view;
+    }
+
+    public void setView(boolean view) {
+        this.view = view;
     }
 }
