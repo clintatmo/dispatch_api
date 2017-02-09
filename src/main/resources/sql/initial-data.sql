@@ -10,7 +10,7 @@ INSERT INTO users_roles (user_id, role_id) VALUES
 INSERT INTO Person (id, birthday, firstname, lastname) VALUES
   (1, NULL, "clint", "atmo");
 
-INSERT INTO test.Privilege
+INSERT INTO Privilege
 (id, canCreate, canDelete, canRead, canUpdate, description, module, component)
 VALUES(1, 1, 1, 1, 1, 'dashboard module', 'dashboard', NULL);
 
