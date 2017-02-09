@@ -1,5 +1,8 @@
 package sr.dispatch.api.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -19,9 +22,11 @@ public class Role {
     private String name;
     private String description;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(mappedBy = "roles")
     private Collection<Account> accounts;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany
     @JoinTable(
             name = "roles_privileges",

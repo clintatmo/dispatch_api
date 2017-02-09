@@ -1,6 +1,8 @@
 package sr.dispatch.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -29,6 +31,7 @@ public class Account {
     private boolean expired = false;
     private boolean locked = false;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany
     @JoinTable(
             name = "users_roles",
