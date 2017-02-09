@@ -44,7 +44,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         Collection<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
         for (Role role : account.getRoles()) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getCode()));
+            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
 
         User userDetails = new User(account.getUsername(),
@@ -69,7 +69,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         public Collection<? extends GrantedAuthority> getAuthorities() {
             Collection<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
             for (Role role : getRoles()) {
-                grantedAuthorities.add(new SimpleGrantedAuthority(role.getCode()));
+                grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
             }
             return grantedAuthorities;
         }

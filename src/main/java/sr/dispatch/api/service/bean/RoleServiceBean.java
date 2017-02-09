@@ -42,6 +42,6 @@ public class RoleServiceBean implements RoleService {
      */
     @Override
     public Role findByCode(String code) {
-       return roleRepository.findByCode(code);
+       return roleRepository.findByName(code);
     }
 }

@@ -13,11 +13,20 @@ public class Privilege {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String module;
+    private String component;
     private String description;
-    private boolean create = false;
-    private boolean edit = false;
-    private boolean delete = false;
-    private boolean view = false;
+
+    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
+    private boolean canCreate = false;
+
+    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
+    private boolean canRead = false;
+
+    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
+    private boolean canUpdate = false;
+
+    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
+    private boolean canDelete = false;
 
     @ManyToMany(mappedBy = "privileges")
     private Collection<Role> roles;
@@ -38,6 +47,14 @@ public class Privilege {
         this.module = module;
     }
 
+    public String getComponent() {
+        return component;
+    }
+
+    public void setComponent(String component) {
+        this.component = component;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -54,35 +71,35 @@ public class Privilege {
         this.roles = roles;
     }
 
-    public boolean isCreate() {
-        return create;
+    public boolean isCanCreate() {
+        return canCreate;
     }
 
-    public void setCreate(boolean create) {
-        this.create = create;
+    public void setCanCreate(boolean canCreate) {
+        this.canCreate = canCreate;
     }
 
-    public boolean isEdit() {
-        return edit;
+    public boolean isCanRead() {
+        return canRead;
     }
 
-    public void setEdit(boolean edit) {
-        this.edit = edit;
+    public void setCanRead(boolean canRead) {
+        this.canRead = canRead;
     }
 
-    public boolean isDelete() {
-        return delete;
+    public boolean isCanUpdate() {
+        return canUpdate;
     }
 
-    public void setDelete(boolean delete) {
-        this.delete = delete;
+    public void setCanUpdate(boolean canUpdate) {
+        this.canUpdate = canUpdate;
     }
 
-    public boolean isView() {
-        return view;
+    public boolean isCanDelete() {
+        return canDelete;
     }
 
-    public void setView(boolean view) {
-        this.view = view;
+    public void setCanDelete(boolean canDelete) {
+        this.canDelete = canDelete;
     }
 }
