@@ -44,7 +44,6 @@ public class OAuth2ServerConfig {
         public void configure(HttpSecurity http) throws Exception {
             // @formatter:off
             http
-                    .csrf().disable()
                     .authorizeRequests()
                     .antMatchers("/oauth/**").permitAll()
                     .antMatchers("/api/**").authenticated();
