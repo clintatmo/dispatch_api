@@ -28,9 +28,6 @@ public class Privilege {
     @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
     private boolean canDelete = false;
 
-    @ManyToMany(mappedBy = "privileges")
-    private Collection<Role> roles;
-
     public Long getId() {
         return id;
     }
@@ -61,14 +58,6 @@ public class Privilege {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Collection<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
     }
 
     public boolean isCanCreate() {

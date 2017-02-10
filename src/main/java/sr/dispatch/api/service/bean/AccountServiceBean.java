@@ -74,7 +74,7 @@ public class AccountServiceBean implements AccountService {
     public Account createNewAccount(Account account) {
 
         // Add the simple user role
-        Role role = roleService.findByCode("ROLE_USER");
+        Role role = roleService.findByName("ROLE_USER");
         Set<Role> roles = new HashSet<>();
         roles.add(role);
 

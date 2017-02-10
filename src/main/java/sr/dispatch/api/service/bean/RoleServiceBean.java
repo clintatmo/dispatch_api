@@ -37,11 +37,11 @@ public class RoleServiceBean implements RoleService {
 
     /**
      * File Role by code
-     * @param code - the code of the role
+     * @param name - the code of the role
      * @return Role object
      */
     @Override
-    public Role findByCode(String code) {
-       return roleRepository.findByName(code);
+    public Role findByName(String name) {
+       return roleRepository.findByName(name);
     }
 }

@@ -23,10 +23,6 @@ public class Role {
     private String description;
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @ManyToMany(mappedBy = "roles")
-    private Collection<Account> accounts;
-
-    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany
     @JoinTable(
             name = "roles_privileges",
@@ -60,14 +56,6 @@ public class Role {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Collection<Account> getAccounts() {
-        return accounts;
-    }
-
-    public void setAccounts(Collection<Account> accounts) {
-        this.accounts = accounts;
     }
 
     public Collection<Privilege> getPrivileges() {
