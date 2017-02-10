@@ -1,4 +1,4 @@
-package sr.dispatch.api.config;
+package sr.dispatch.api.config.mail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

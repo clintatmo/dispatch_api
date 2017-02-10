@@ -1,4 +1,4 @@
-package sr.dispatch.api.config;
+package sr.dispatch.api.config.security;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -17,11 +17,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class SimpleCORSFilter implements Filter {
+public class CORSFilter implements Filter {
 
-    private final Logger log = LoggerFactory.getLogger(SimpleCORSFilter.class);
+    private final Logger log = LoggerFactory.getLogger(CORSFilter.class);
 
-    public SimpleCORSFilter() {
+    public CORSFilter() {
         log.info("SimpleCORSFilter init");
     }
 

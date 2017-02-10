@@ -1,4 +1,4 @@
-package sr.dispatch.api.config;
+package sr.dispatch.api.config.security;
 
 import sr.dispatch.api.model.Account;
 import sr.dispatch.api.model.Role;

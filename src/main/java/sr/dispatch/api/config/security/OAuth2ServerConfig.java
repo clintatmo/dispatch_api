@@ -1,4 +1,4 @@
-package sr.dispatch.api.config;
+package sr.dispatch.api.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

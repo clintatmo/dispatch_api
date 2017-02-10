@@ -1,4 +1,4 @@
-package sr.dispatch.api.config;
+package sr.dispatch.api.config.data;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;

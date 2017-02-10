@@ -1,6 +1,6 @@
 package sr.dispatch.api.activiti.identity;
 
-import sr.dispatch.api.config.CustomUserDetailsService;
+import sr.dispatch.api.config.security.CustomUserDetailsService;
 import org.activiti.engine.identity.Group;
 import org.activiti.engine.identity.Picture;
 import org.activiti.engine.identity.User;

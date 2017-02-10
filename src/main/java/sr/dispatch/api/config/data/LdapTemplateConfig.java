@@ -1,4 +1,4 @@
-package sr.dispatch.api.config;
+package sr.dispatch.api.config.data;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
