@@ -12,7 +12,9 @@ public class Privilege {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String module;
+
+    @ManyToOne
+    private Module module;
     private String component;
     private String description;
 
@@ -36,11 +38,11 @@ public class Privilege {
         this.id = id;
     }
 
-    public String getModule() {
+    public Module getModule() {
         return module;
     }
 
-    public void setModule(String module) {
+    public void setModule(Module module) {
         this.module = module;
     }
 
