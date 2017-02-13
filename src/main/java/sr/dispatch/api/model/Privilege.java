@@ -19,6 +19,9 @@ public class Privilege {
     private String description;
 
     @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
+    private boolean deleted;
+
+    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
     private boolean canCreate = false;
 
     @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
@@ -92,5 +95,13 @@ public class Privilege {
 
     public void setCanDelete(boolean canDelete) {
         this.canDelete = canDelete;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

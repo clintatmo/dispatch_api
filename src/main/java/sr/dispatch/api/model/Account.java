@@ -31,6 +31,9 @@ public class Account {
     private boolean expired = false;
     private boolean locked = false;
 
+    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
+    private boolean deleted;
+
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany
     @JoinTable(
@@ -115,5 +118,13 @@ public class Account {
 
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

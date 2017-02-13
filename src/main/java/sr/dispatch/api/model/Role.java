@@ -22,6 +22,9 @@ public class Role {
     private String name;
     private String description;
 
+    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
+    private boolean deleted;
+
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany
     @JoinTable(
@@ -64,5 +67,13 @@ public class Role {
 
     public void setPrivileges(Collection<Privilege> privileges) {
         this.privileges = privileges;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

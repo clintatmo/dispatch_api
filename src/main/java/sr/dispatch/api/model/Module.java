@@ -1,9 +1,6 @@
 package sr.dispatch.api.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by catmosoerodjo on 2/12/17.
@@ -17,6 +14,10 @@ public class Module {
     private Long id;
     private String name;
     private String description;
+
+    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
+    private boolean deleted;
+
 
     public Long getId() {
         return id;
@@ -40,5 +41,13 @@ public class Module {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }
