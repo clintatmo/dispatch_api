@@ -1,5 +1,7 @@
 package sr.dispatch.api.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import sr.dispatch.api.model.Module;
 
 import java.util.List;
@@ -11,4 +13,5 @@ public interface ModuleService {
 
     List<Module> findAllModules();
 
+    Page<Module> findAllModulesByPage(Pageable pageable);
 }

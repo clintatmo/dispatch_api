@@ -1,6 +1,6 @@
 package sr.dispatch.api.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import sr.dispatch.api.model.Module;
 
@@ -9,5 +9,5 @@ import sr.dispatch.api.model.Module;
  */
 
 @Repository
-public interface ModuleRepository extends JpaRepository<Module, Long> {
+public interface ModuleRepository extends PagingAndSortingRepository<Module, Long> {
 }

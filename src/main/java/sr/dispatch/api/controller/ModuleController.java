@@ -1,6 +1,8 @@
 package sr.dispatch.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import sr.dispatch.api.model.Module;
 import sr.dispatch.api.service.ModuleService;
-
-import java.util.List;
 
 /**
  * Created by catmosoerodjo on 2/13/17.
@@ -23,13 +23,21 @@ public class ModuleController {
 
     //-------------------Retrieve All Persons--------------------------------------------------------
 
+//    @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<List<Module>> listAllModules() {
+//        List<Module> modules = moduleService.findAllModules();
+//        if(modules.isEmpty()){
+//            return new ResponseEntity<List<Module>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+//        }
+//        return new ResponseEntity<List<Module>>(modules, HttpStatus.OK);
+//    }
+
+    //-------------------Retrieve All Persons With Pagination--------------------------------------------------------
+
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Module>> listAllModules() {
-        List<Module> modules = moduleService.findAllModules();
-        if(modules.isEmpty()){
-            return new ResponseEntity<List<Module>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
-        }
-        return new ResponseEntity<List<Module>>(modules, HttpStatus.OK);
+    public ResponseEntity<Page<Module>> listAllModules(Pageable pageable) {
+        Page<Module> modules = moduleService.findAllModulesByPage(pageable);
+        return new ResponseEntity<Page<Module>>(modules, HttpStatus.OK);
     }
 
 
