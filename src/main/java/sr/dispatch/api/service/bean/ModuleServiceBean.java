@@ -1,8 +1,6 @@
 package sr.dispatch.api.service.bean;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.stereotype.Service;
 import sr.dispatch.api.model.Module;
@@ -23,11 +21,6 @@ public class ModuleServiceBean implements ModuleService {
     @Override
     @PostFilter("filterObject.deleted() == false")
     public List<Module> findAllModules() {
-        return null;
-    }
-
-    @Override
-    public Page<Module> findAllModulesByPage(Pageable pageable) {
-        return moduleRepository.findAll(pageable);
+        return moduleRepository.findAll();
     }
 }
