@@ -83,7 +83,7 @@ public class ModuleController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Module> updatePerson(@PathVariable("id") long id, @RequestBody Module module) {
-        System.out.println("Updating Person " + id);
+        System.out.println("Updating Module " + id);
 
         Module currentModule = moduleService.findById(id);
 
