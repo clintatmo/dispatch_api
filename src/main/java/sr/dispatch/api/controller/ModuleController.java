@@ -3,10 +3,12 @@ package sr.dispatch.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 import sr.dispatch.api.model.Module;
 import sr.dispatch.api.service.ModuleService;
 
@@ -25,7 +27,7 @@ public class ModuleController {
 
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Module>> listAllModules() {
-        List<Module> modules = moduleService.findAllModules();
+        List<Module> modules = moduleService.findAllActiveModules();
         if(modules.isEmpty()){
             return new ResponseEntity<List<Module>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
         }
@@ -43,40 +45,33 @@ public class ModuleController {
 
     //-------------------Retrieve Single Person--------------------------------------------------------
 
-//    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Person> getPerson(@PathVariable("id") long id) {
-//        System.out.println("Fetching Person with id " + id);
-//        Person Person = personService.findById(id);
-//        if (Person == null) {
-//            System.out.println("Person with id " + id + " not found");
-//            return new ResponseEntity<Person>(HttpStatus.NOT_FOUND);
-//        }
-//        return new ResponseEntity<Person>(Person, HttpStatus.OK);
-//    }
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Module> getPerson(@PathVariable("id") long id) {
+        System.out.println("Fetching Person with id " + id);
+        Module module = moduleService.findById(id);
+        if (module == null) {
+            System.out.println("Module with id " + id + " not found");
+            return new ResponseEntity<Module>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Module>(module, HttpStatus.OK);
+    }
 
 
 
     //-------------------Create a Person--------------------------------------------------------
 
-//    @RequestMapping(value = "", method = RequestMethod.POST)
-//    public ResponseEntity<Void> createPerson(@RequestBody PersonDto person, UriComponentsBuilder ucBuilder) {
-//        System.out.println("Creating Person with email " + person.getLastname());
-//
-//        if (personService.isPersonExist(person)) {
-//            System.out.println("A Person with email " + person.getLastname() + " already exist");
-//            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-//        }
-//
-//        Person person1 = new Person();
-//        person1.setFirstname(person.getFirstname());
-//        person1.setLastname(person.getLastname());
-//        person1.setBirthday(person.getBirthday());
-//        personService.savePerson(person1);
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setLocation(ucBuilder.path("/Person/{id}").buildAndExpand(person.getId()).toUri());
-//        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
-//    }
+    @RequestMapping(value = "", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Module> createPerson(@RequestBody Module module) {
+        System.out.println("Creating Module with name " + module.getName());
+
+        if (module.getId() == null) {
+            System.out.println("A Module with id " + module.getId() + " already exist");
+            return new ResponseEntity<Module>(HttpStatus.CONFLICT);
+        }
+        moduleService.updateModule(module);
+
+        return new ResponseEntity<Module>(module, HttpStatus.CREATED);
+    }
 
 
     //------------------- Update a Person --------------------------------------------------------
@@ -98,19 +93,20 @@ public class ModuleController {
 
     //------------------- Delete a Person --------------------------------------------------------
 
-//    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-//    public ResponseEntity<Person> deletePerson(@PathVariable("id") long id) {
-//        System.out.println("Fetching & Deleting Person with id " + id);
-//
-//        Person Person = personService.findById(id);
-//        if (Person == null) {
-//            System.out.println("Unable to delete. Person with id " + id + " not found");
-//            return new ResponseEntity<Person>(HttpStatus.NOT_FOUND);
-//        }
-//
-//        personService.deletePersonById(id);
-//        return new ResponseEntity<Person>(HttpStatus.NO_CONTENT);
-//    }
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Module> deletePerson(@PathVariable("id") long id) {
+        System.out.println("Fetching & Deleting Module with id " + id);
+
+        Module module = moduleService.findById(id);
+        if (module == null) {
+            System.out.println("Unable to delete. Person with id " + id + " not found");
+            return new ResponseEntity<Module>(HttpStatus.NOT_FOUND);
+        }
+
+        module.setDeleted(true);
+        moduleService.updateModule(module);
+        return new ResponseEntity<Module>(HttpStatus.NO_CONTENT);
+    }
 
 
     //------------------- Delete All Persons --------------------------------------------------------

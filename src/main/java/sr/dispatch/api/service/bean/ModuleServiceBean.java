@@ -33,4 +33,9 @@ public class ModuleServiceBean implements ModuleService {
     public void updateModule(Module module) {
         moduleRepository.save(module);
     }
+
+    @Override
+    public List<Module> findAllActiveModules() {
+        return moduleRepository.findActiveModules();
+    }
 }

@@ -11,8 +11,9 @@ public interface ModuleService {
 
     List<Module> findAllModules();
 
-
     Module findById(long id);
 
     void updateModule(Module module);
+
+    List<Module> findAllActiveModules();
 }
