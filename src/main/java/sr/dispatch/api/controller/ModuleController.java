@@ -6,9 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sr.dispatch.api.model.Module;
 import sr.dispatch.api.service.ModuleService;
 
@@ -83,22 +81,20 @@ public class ModuleController {
 
     //------------------- Update a Person --------------------------------------------------------
 
-//    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-//    public ResponseEntity<Person> updatePerson(@PathVariable("id") long id, @RequestBody Person person) {
-//        System.out.println("Updating Person " + id);
-//
-//        Person currentPerson = personService.findById(id);
-//
-//        if (currentPerson==null) {
-//            System.out.println("Person with id " + id + " not found");
-//            return new ResponseEntity<Person>(HttpStatus.NOT_FOUND);
-//        }
-//
-//        currentPerson.setLastname(person.getLastname());
-//
-//        personService.updatePerson(currentPerson);
-//        return new ResponseEntity<Person>(currentPerson, HttpStatus.OK);
-//    }
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Module> updatePerson(@PathVariable("id") long id, @RequestBody Module module) {
+        System.out.println("Updating Person " + id);
+
+        Module currentModule = moduleService.findById(id);
+
+        if (currentModule==null) {
+            System.out.println("Module with id " + id + " not found");
+            return new ResponseEntity<Module>(HttpStatus.NOT_FOUND);
+        }
+
+        moduleService.updateModule(module);
+        return new ResponseEntity<Module>(module, HttpStatus.OK);
+    }
 
     //------------------- Delete a Person --------------------------------------------------------
 

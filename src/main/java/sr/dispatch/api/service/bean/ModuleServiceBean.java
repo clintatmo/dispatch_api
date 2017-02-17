@@ -23,4 +23,14 @@ public class ModuleServiceBean implements ModuleService {
     public List<Module> findAllModules() {
         return moduleRepository.findAll();
     }
+
+    @Override
+    public Module findById(long id) {
+        return moduleRepository.findOne(id);
+    }
+
+    @Override
+    public void updateModule(Module module) {
+        moduleRepository.save(module);
+    }
 }
