@@ -15,7 +15,7 @@ import java.util.Date;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class AuditingBaseEntity {
+public abstract class Audit {
 
     @Column(name = "created_by")
     @CreatedBy
