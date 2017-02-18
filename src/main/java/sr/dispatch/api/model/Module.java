@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 
 @Entity
-public class Module {
+public class Module extends AuditingBaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

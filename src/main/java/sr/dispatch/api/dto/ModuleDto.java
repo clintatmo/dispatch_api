@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 /**
  * Created by catmosoerodjo on 2/18/17.
  */
-public class ModuleDto {
+public class ModuleDto{
 
     @JsonIgnore
     private Long id;
