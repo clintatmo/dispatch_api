@@ -1,4 +1,4 @@
-package sr.dispatch.api.activiti.identity;
+package sr.dispatch.api.config.activti.identity;
 
 import org.activiti.engine.impl.interceptor.Session;
 import org.activiti.engine.impl.interceptor.SessionFactory;

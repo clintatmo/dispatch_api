@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.transaction.PlatformTransactionManager;
-import sr.dispatch.api.activiti.identity.ActivitiGroupManagerFactory;
-import sr.dispatch.api.activiti.identity.ActivitiUserManagerFactory;
-import sr.dispatch.api.activiti.listener.ManagerAssignmentHandler;
+import sr.dispatch.api.config.activti.identity.ActivitiGroupManagerFactory;
+import sr.dispatch.api.config.activti.identity.ActivitiUserManagerFactory;
+import sr.dispatch.api.config.activti.listener.ManagerAssignmentHandler;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;

@@ -1,14 +1,12 @@
 package sr.dispatch.api.controller;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
+import sr.dispatch.api.dto.ModuleDto;
 import sr.dispatch.api.model.Module;
 import sr.dispatch.api.service.ModuleService;
 
@@ -22,6 +20,9 @@ import java.util.List;
 public class ModuleController {
     @Autowired
     private ModuleService moduleService;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     //-------------------Retrieve All Persons--------------------------------------------------------
 
@@ -61,16 +62,17 @@ public class ModuleController {
     //-------------------Create a Person--------------------------------------------------------
 
     @RequestMapping(value = "", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Module> createPerson(@RequestBody Module module) {
-        System.out.println("Creating Module with name " + module.getName());
+    public ResponseEntity<String> createPerson(@RequestBody ModuleDto moduleDto) {
+        System.out.println("Creating Module with name " + moduleDto.getName());
 
-        if (module.getId() == null) {
-            System.out.println("A Module with id " + module.getId() + " already exist");
-            return new ResponseEntity<Module>(HttpStatus.CONFLICT);
+        if (moduleDto.getId() != null) {
+            System.out.println("A Module with id " + moduleDto.getId() + " already exist");
+            return new ResponseEntity<String>("A Module with id " + moduleDto.getId() + " already exist", HttpStatus.CONFLICT);
         }
-        moduleService.updateModule(module);
 
-        return new ResponseEntity<Module>(module, HttpStatus.CREATED);
+        moduleService.updateModule(modelMapper.map(moduleDto, Module.class));
+
+        return new ResponseEntity<String>("Saved!", HttpStatus.CREATED);
     }
 
 

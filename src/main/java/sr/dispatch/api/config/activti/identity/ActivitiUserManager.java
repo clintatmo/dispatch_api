@@ -1,4 +1,4 @@
-package sr.dispatch.api.activiti.identity;
+package sr.dispatch.api.config.activti.identity;
 
 import sr.dispatch.api.config.security.CustomUserDetailsService;
 import org.activiti.engine.identity.Group;

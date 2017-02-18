@@ -1,4 +1,4 @@
-package sr.dispatch.api.activiti.listener;
+package sr.dispatch.api.config.activti.listener;
 
 import org.activiti.engine.delegate.DelegateTask;
 import org.activiti.engine.delegate.TaskListener;
